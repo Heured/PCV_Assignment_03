@@ -2,32 +2,35 @@
 try warp.image_in_image
 ## 单应性变换
 1. 术语：projective transformation = homography = collineation
+  
 2. 齐次坐标：使用n+1维坐标来表示n维坐标，比如在二维笛卡尔坐标系中加入变量w来形成二维齐次坐标：(x,y)->(x,y,w)
   齐次坐标具有规模不变性，同一点可以被无数多个齐次坐标来表示。(x,y,1)->(ax,ay,a)齐次坐标可以通过同除坐标最后一项得到笛卡尔坐标。
+  
 3. 单应性变换是对齐次坐标下点的线性变换，可以通过矩阵运算来表达x'=Hx
   
-![]()(H为非奇异矩阵)
+![单应性变换](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/单应性变化.png)(H为非奇异矩阵)
+  
 4.一些基础变换
 (1)刚体变换(rigid transformation): 旋转和平移/rotation，translation，3个自由度，点与点之间距离不变
   
-![]()(R为2*2旋转矩阵，t为2维列向量，0^T为0的二维行向量)
+![刚体变化](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/刚体变换.PNG)(R为2*2旋转矩阵，t为2维列向量，0^T为0的二维行向量)
   
 (2)相似变换(similarity transformation): 增加了缩放尺度, 四个自由度，点与点之间的距离比不变
   
-![]()(s为缩放尺度)
+![相似变换](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/相似变换.PNG)(s为缩放尺度)
   
 (3)仿射变换(affine transformation)：仿射变换和相似变换近似，不同之处在于相似变换具有单一旋转因子和单一缩放因子，仿射变换具有两个旋转因子和两个缩放因子，因此具有6个自由度，不具有保角性和保持距离比的性质，但是原图平行变换后仍然是平行线
   
-![]()
-![]()
+![仿射变换](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/仿射变换.PNG)
+![仿射变换2](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/仿射变换2.PNG)
   
 (4)投影变换(projective transformation)：也叫做单应性变换。投影变换是齐次坐标下非奇异的线性变换。然而在非齐次坐标系下是非线性的，这说明齐次坐标的发明是很有价值的。投影变换比仿射变换多2个自由度，具有8个自由度。上面提到的仿射变换具有“不变”性质，在投影变换中已不复存在了。尽管如此，它还有一项不变性，那就是在原图中保持共线的3个点，变换后仍旧共线。投影变换表示如下：
   
-![]()(其中V=(v1,v2)^T)
+![投影变换](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/投影变换.PNG)(其中V=(v1,v2)^T)
   
 (5)透视变换：透视变换将图像投影到一个新的视平面，是二维到三维再到另一个二维(x', y')空间的映射。透视变换前两行和仿射变换相同，第三行用于实现透视变换。透视变换前后，原来共线的三个点，变换之后仍然共线。
   
-
+![透视变换](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/透视变换.PNG)
   
 以上公式设变换之前的点是z值为1的点，它三维平面上的值是x,y,1，在二维平面上的投影是x,y，通过矩阵变换成三维中的点X,Y,Z，再通过除以三维中Ｚ轴的值，转换成二维中的点x’,y’.  
 从以上公式可知，仿射变换是透视变换的一种特殊情况．它把二维转到三维，变换后，再转映射回之前的二维空间（而不是另一个二维空间）
