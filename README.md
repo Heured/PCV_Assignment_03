@@ -122,10 +122,23 @@ show()
 遇到问题：运行时，warp.py会import matplotlib.delaunay，但是不知道是什么原因环境里的matplotlib没有delaunay，
 鉴于本次实验并没有用到delaunay所以我把这段代码注释了
   
+  
+解决方法：以如下方式修改（加注释的是没改前的，加注释下一行是修改后的）
+  
 ```
-from scipy.spatial import Delaunay as md
 #import matplotlib.delaunay as md 
+from scipy.spatial import Delaunay
+
+def triangulate_points(x,y):
+    """ Delaunay triangulation of 2D points. """
+    
+    #centers,edges,tri,neighbors = md.delaunay(x,y)
+    tri = Delaunay(np.c_[x,y])
+    
+    return tri
+
 ```
+  
   
   
 结果：
