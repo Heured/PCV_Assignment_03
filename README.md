@@ -11,6 +11,7 @@ try warp.image_in_image
 ![单应性变换](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/单应性变化.png)(H为非奇异矩阵)
   
 4.一些基础变换
+  
 (1)刚体变换(rigid transformation): 旋转和平移/rotation，translation，3个自由度，点与点之间距离不变
   
 ![刚体变化](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/刚体变换.PNG)(R为2*2旋转矩阵，t为2维列向量，0^T为0的二维行向量)
