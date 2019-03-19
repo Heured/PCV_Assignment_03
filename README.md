@@ -4,6 +4,15 @@ try warp.image_in_image
 ## 图像扭曲
 对图像块应用仿射变换被称为图像扭曲。扭曲操作可以用SciPy工具包中的ndimage包来简单完成：
 ### image in image
+原图：
+  
+图1：
+  
+![图1](https://github.com/Heured/PCV_Assignment_03/blob/master/data/P90317-102402-1.jpg)
+  
+图2：
+  
+![图2](https://github.com/Heured/PCV_Assignment_03/blob/master/data/P90319-152912.jpg)
 代码如下：
   
 ```python
@@ -75,3 +84,4 @@ from scipy.spatial import Delaunay as md
   
 结果：
   
+![emmmm](https://github.com/Heured/PCV_Assignment_03/blob/master/imgToShow/Figure_1.png)
